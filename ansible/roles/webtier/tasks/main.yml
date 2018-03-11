@@ -67,6 +67,10 @@
   systemd: name={{ app_name }}.service
            state=started
 
+- name: Ensure {{ app_name }} log rotate is configured
+  template: src=logrotate.conf
+            dest=/etc/logrotate.d/{{ app_name}}
+
 - name: Ensure Nginx installed
   apt: pkg=nginx
 
